@@ -1,0 +1,46 @@
+<div *ngIf="hero">
+
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <p>Statistiques</p>
+    <ul >
+      <li>
+        <label>attaque:
+          <input type="number" min="1"oninput="validity.valid||(value='');"  max="{{maxPoints(hero.attaque)}}" [(ngModel)]="hero.attaque" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>esquive:
+          <input type="number" min="1" oninput="validity.valid||(value='');" max="{{maxPoints(hero.esquive)}}" [(ngModel)]="hero.esquive" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>degats:
+          <input type="number" min="1" oninput="validity.valid||(value='');" max="{{maxPoints(hero.degats)}}" [(ngModel)]="hero.degats" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>point de vie:
+          <input type="number" min="1" oninput="validity.valid||(value='');" max="{{maxPoints(hero.pointdevie)}}" [(ngModel)]="hero.pointdevie" placeholder="1"/>
+        </label>
+      </li>
+    </ul>
+    <p>Total points : {{updatePointsRestants()}}</p>
+
+
+    <div *ngIf='hero.weaponid != ""'>
+      <p>Arme</p>
+      <!--<p>{{ getWeapon(hero.weaponid)}}</p>-->
+    </div>
+    <div *ngIf='hero.weaponid == ""'>
+      <p>Aucune Arme</p>
+    </div>
+  </div>
+  <button (click)="goBack()">go back</button>
+</div>

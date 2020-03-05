@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let hero of heroes">
+    <a routerLink="/hero/detail/{{hero.id}}">
+      <span class="badge">{{hero.name}}</span>
+    </a>
+  </li>
+</ul>
