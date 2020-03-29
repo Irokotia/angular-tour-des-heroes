@@ -1,7 +1,6 @@
 <div *ngIf="hero">
 
   <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
   <div>
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name"/>
@@ -34,12 +33,17 @@
     <p>Total points : {{updatePointsRestants()}}</p>
 
 
-    <div *ngIf='hero.weaponid != ""'>
-      <p>Arme</p>
-      <!--<p>{{ getWeapon(hero.weaponid)}}</p>-->
-    </div>
-    <div *ngIf='hero.weaponid == ""'>
-      <p>Aucune Arme</p>
+    <div>
+      <p>Select a weapon for your hero</p>
+      <mat-form-field>
+        <mat-label>hero's weapon</mat-label>
+        <mat-select [(ngModel)]="hero.weaponid" selected="hero.weaponId">
+          <mat-option value=''>No weapon</mat-option>
+          <mat-option *ngFor="let weapon of weapons" [value]="weapon.id"  >
+            {{weapon.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
   <button (click)="goBack()">go back</button>

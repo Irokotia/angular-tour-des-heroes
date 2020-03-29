@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { HeroService } from '../hero.service';
 import {WeaponService} from '../weapon.service';
 import {Weapon} from '../data/weapon';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-hero-detail',
@@ -14,20 +16,30 @@ import {Weapon} from '../data/weapon';
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
 
+  @Input() weapons : Weapon[];
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private weaponService: WeaponService,
+    private storage: AngularFireStorage, private database: AngularFirestore
   ) {}
 
   ngOnInit(): void {
     this.getHero();
+    this.getWeapons();
   }
 
   getHero(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
+  }
+
+  getWeapons(): void {
+    this.weaponService.getWeapons()
+      .subscribe(weapons => this.weapons = weapons);
   }
   goBack(): void {
     this.location.back();
@@ -36,6 +48,22 @@ export class HeroDetailComponent implements OnInit {
   updatePointsRestants() {
     const total = 40;
     return total - (this.hero.attaque + this.hero.degats + this.hero.esquive + this.hero.pointdevie);
+  }
+
+
+  getSelectedWeapon() {
+    return this.weapons.find(e => e.id == this.hero.weaponid);
+  }
+
+  saveHeroCharacteristics() {
+    console.log(this.hero);
+
+    if (this.updatePointsRestants() == 0) {
+      if(this.hero.getName() != '') {
+        this.heroService.updateHero(this.hero.getId(), this.hero);
+      }
+    }
+
   }
 
   maxPoints(val: number) {

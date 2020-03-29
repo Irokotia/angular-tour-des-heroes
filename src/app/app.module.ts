@@ -16,6 +16,8 @@ import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore'
 import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         // AngularFireAnalyticsModule, // dynamically imports firebase/analytics
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-        AngularFireStorageModule // imports firebase/storage only needed for storage features
+        AngularFireStorageModule, // imports firebase/storage only needed for storage features
+        MatSelectModule
     ],
   providers: [],
   bootstrap: [AppComponent]

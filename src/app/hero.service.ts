@@ -92,15 +92,14 @@ export class HeroService {
   }
 
   // Modification d'un héro
-  updateHero(hero: Hero) {
+  updateHero(id: string, hero: Hero) {
 
     // Update document
-    this.getHeroDocument(hero.id).update(Object.assign({}, hero));
+    this.getHeroDocument(id).update(Object.assign({}, hero));
   }
 
   // Suppression d'un héro
   deleteHero(id: string) {
-
     // Delete the document
     this.getHeroDocument(id).delete();
   }

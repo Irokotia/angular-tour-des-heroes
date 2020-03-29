@@ -9,7 +9,11 @@ export class Hero extends Serializable  {
   pointdevie: number; // Point de vie
   weaponid: string;
 
-  uneMethode(): string {
-    return 'le nom de mon hero' + this.name;
+  getId(): string {
+    return this.id;
+  }
+
+  getName(): string {
+    return this.name;
   }
 }
