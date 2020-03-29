@@ -54,14 +54,22 @@ export class HeroDetailComponent implements OnInit {
   getSelectedWeapon() {
     return this.weapons.find(e => e.id == this.hero.weaponid);
   }
+  updateCharaHero(attr, value) {
+    for (const property in this.hero) {
+      if ( property == attr) this.hero[property] += value;
+    }
+  }
 
   saveHeroCharacteristics() {
-    console.log(this.hero);
-
     if (this.updatePointsRestants() == 0) {
-      if(this.hero.getName() != '') {
+      if (this.hero.getName() != '') {
         this.heroService.updateHero(this.hero.getId(), this.hero);
+        this.goBack();
+      } else {
+
       }
+    } else {
+
     }
 
   }

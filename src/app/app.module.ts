@@ -17,6 +17,7 @@ import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
         AngularFireStorageModule, // imports firebase/storage only needed for storage features
-        MatSelectModule
+        MatSelectModule,
+        BrowserAnimationsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

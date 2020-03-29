@@ -36,4 +36,23 @@ export class WeaponDetailComponent implements OnInit {
     const total = 0;
     return total - (this.weapon.attaque + this.weapon.degats + this.weapon.esquive + this.weapon.pointdevie);
   }
+  updateCharaWeapon(attr, value) {
+    for (const property in this.weapon) {
+      if ( property == attr) this.weapon[property] += value;
+    }
+  }
+
+  saveWeaponCharacteristics() {
+    if (this.updatePointsRestants() == 0) {
+      if (this.weapon.getName() != '') {
+        this.weaponService.updateWeapon(this.weapon.getId(), this.weapon);
+        this.goBack();
+      } else {
+
+      }
+    } else {
+
+    }
+
+  }
 }

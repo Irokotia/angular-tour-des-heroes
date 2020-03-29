@@ -10,7 +10,12 @@ export class Weapon extends Serializable {
   pointdevie: number;
   heroid: string;
 
-  uneMethode(): string {
-    return 'le nom de mon arme ' + this.name;
+
+  getId(): string {
+    return this.id;
+  }
+
+  getName(): string {
+    return this.name;
   }
 }

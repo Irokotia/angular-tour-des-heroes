@@ -86,10 +86,10 @@ export class WeaponService {
   }
 
   // Modification d'une weapon
-  updateWeapon(weapon: Weapon) {
+  updateWeapon(id: string,weapon: Weapon) {
 
     // Update document
-    this.getWeaponDocument(weapon.id).update(Object.assign({}, weapon));
+    this.getWeaponDocument(id).update(Object.assign({}, weapon));
   }
 
   // Suppression d'une weapon
