@@ -13,6 +13,7 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
 
   heroes: Hero[];
+  private sortingType: boolean;
 
   constructor(private heroService: HeroService) { }
 
@@ -27,5 +28,13 @@ export class HeroesComponent implements OnInit {
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
+  }*
+  sortHeroesByProperty(property) {
+    if (this.sortingType) {
+      this.heroes.sort((a, b) => a[property] - b[property] );
+    } else {
+      this.heroes.sort((a, b) => b[property] - a[property] );
+    }
+    this.sortingType = !this.sortingType;
   }
 }

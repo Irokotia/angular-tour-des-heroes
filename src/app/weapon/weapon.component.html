@@ -1,7 +1,25 @@
+<div class="filters">
+  <span> filter by : </span>
+
+  <button type="button" class="btn btn-primary" (click)="sortWeaponsByProperty('attaque');"> attaque </button>
+  <button type="button" class="btn btn-primary" (click)="sortWeaponsByProperty('degats');"> degats </button>
+  <button type="button" class="btn btn-primary" (click)="sortWeaponsByProperty('esquive');"> esquive </button>
+  <button type="button" class="btn btn-primary" (click)="sortWeaponsByProperty('pointdevie');"> point de vie </button>
+
+
+</div>
+
+
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let weapon of weapons">
     <a routerLink="/weapon/detail/{{weapon.id}}">
       <span class="badge">{{weapon.name}}</span>
     </a>
+    <div>
+      <p> attaque : {{weapon.attaque}} </p>
+      <p>degats : {{weapon.degats}} </p>
+      <p> esquive : {{weapon.esquive }} </p>
+      <p> point de vie :{{weapon.pointdevie}} </p>
+    </div>
   </li>
 </ul>

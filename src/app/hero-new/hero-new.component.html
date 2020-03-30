@@ -1,0 +1,61 @@
+<div *ngIf="hero">
+
+  <h2>Create a new Hero</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <p>Statistiques</p>
+    <ul >
+      <li>
+        <label>attaque:
+          <input type="number" min="1"oninput="validity.valid||(value='');"  max="{{maxPoints(hero.attaque)}}"  (ngModelChange)="updateCharaHero('attaque',hero.attaque)"  [(ngModel)]="hero.attaque" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>esquive:
+          <input type="number" min="1" oninput="validity.valid||(value='');" max="{{maxPoints(hero.esquive)}}"  (ngModelChange)="updateCharaHero('esquive',hero.esquive)"  [(ngModel)]="hero.esquive" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>degats:
+          <input type="number" min="1" oninput="validity.valid||(value='');" max="{{maxPoints(hero.degats)}}" (ngModelChange)="updateCharaHero('degats',hero.degats)" [(ngModel)]="hero.degats" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>point de vie:
+          <input type="number" min="1" oninput="validity.valid||(value='');" max="{{maxPoints(hero.pointdevie)}}" (ngModelChange)="updateCharaHero('pointdevie',hero.pointdevie)"  [(ngModel)]="hero.pointdevie" placeholder="1"/>
+        </label>
+      </li>
+    </ul>
+    <p>Total points : {{updatePointsRestants()}}</p>
+
+
+    <div>
+      <p>Select a weapon</p>
+      <mat-form-field>
+        <mat-label>hero's weapon</mat-label>
+        <mat-select [(ngModel)]="hero.weaponid" selected="hero.weaponid">
+          <mat-option value=''>No weapon</mat-option>
+          <mat-option *ngFor="let weapon of weapons" [value]="weapon.id"  >
+            {{weapon.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="selectedWeapon" *ngIf="weapons && hero.weaponid">
+    <div> Attaque : {{getSelectedWeapon().attaque}} </div>
+    <div> Degats : {{getSelectedWeapon().degats}} </div>
+    <div> Esquive : {{getSelectedWeapon().esquive}}</div>
+    <div> Point de vie : {{getSelectedWeapon().pointdevie}}</div>
+  </div>
+
+
+  <button (click)="goBack()">go back</button>
+
+  <button (click)="createHero()" >Create</button>
+</div>

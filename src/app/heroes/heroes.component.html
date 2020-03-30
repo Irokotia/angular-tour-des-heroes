@@ -1,7 +1,26 @@
+<div class="filters">
+  <span> filter by : </span>
+
+  <button type="button" class="btn btn-primary" (click)="sortHeroesByProperty('attaque');"> attaque </button>
+  <button type="button" class="btn btn-primary" (click)="sortHeroesByProperty('degats');"> degats </button>
+  <button type="button" class="btn btn-primary" (click)="sortHeroesByProperty('esquive');"> esquive </button>
+  <button type="button" class="btn btn-primary" (click)="sortHeroesByProperty('pointdevie');"> point de vie </button>
+
+
+</div>
+
+
+
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let hero of heroes">
     <a routerLink="/hero/detail/{{hero.id}}">
       <span class="badge">{{hero.name}}</span>
     </a>
+    <div>
+      <p> attaque : {{hero.attaque}} </p>
+      <p>degats : {{hero.degats}} </p>
+      <p> esquive : {{hero.esquive }} </p>
+      <p> point de vie :{{hero.pointdevie}} </p>
+    </div>
   </li>
 </ul>

@@ -1,0 +1,38 @@
+<div *ngIf="weapon">
+
+  <h2>Create new weapon</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="weapon.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <p>Statistiques</p>
+    <ul >
+      <li>
+        <label>attaque:
+          <input type="number" min="-5" max="5" (ngModelChange)="updateCharaWeapon('attaque',weapon.attaque)" [(ngModel)]="weapon.attaque" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>esquive:
+          <input type="number" min="-5" max="5" (ngModelChange)="updateCharaWeapon('esquive',weapon.esquive)" [(ngModel)]="weapon.esquive" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>degats:
+          <input type="number" min="-5" max="5"  (ngModelChange)="updateCharaWeapon('degats',weapon.degats)" [(ngModel)]="weapon.degats" placeholder="1"/>
+        </label>
+      </li>
+      <li>
+        <label>point de vie:
+          <input type="number" min="-5" max="5" (ngModelChange)="updateCharaWeapon('pointdevie',weapon.pointdevie)" [(ngModel)]="weapon.pointdevie" placeholder="1"/>
+        </label>
+      </li>
+    </ul>
+    <p>Total points : {{updatePointsRestants()}}</p>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="createWeapon()" >Create</button>
+</div>
+

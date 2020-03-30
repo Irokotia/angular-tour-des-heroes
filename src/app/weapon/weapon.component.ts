@@ -12,6 +12,7 @@ export class WeaponComponent implements OnInit {
   selectedWeapon: Weapon;
 
   weapons: Weapon[];
+  private sortingType: boolean;
 
   constructor(private weaponService: WeaponService) { }
 
@@ -26,6 +27,14 @@ export class WeaponComponent implements OnInit {
   getWeapons(): void {
     this.weaponService.getWeapons()
       .subscribe(weapons => this.weapons = weapons);
+  }
+  sortWeaponsByProperty(property) {
+    if (this.sortingType) {
+      this.weapons.sort((a, b) => a[property] - b[property] );
+    } else {
+      this.weapons.sort((a, b) => b[property] - a[property] );
+    }
+    this.sortingType = !this.sortingType;
   }
 
 }

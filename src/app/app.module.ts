@@ -17,7 +17,9 @@ import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {MatSelectModule} from '@angular/material/select';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeroNewComponent } from './hero-new/hero-new.component';
+import { WeaponNewComponent } from './weapon-new/weapon-new.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     MessagesComponent,
     DashboardComponent,
     WeaponComponent,
-    WeaponDetailComponent
+    WeaponDetailComponent,
+    HeroNewComponent,
+    WeaponNewComponent
   ],
     imports: [
         BrowserModule,
