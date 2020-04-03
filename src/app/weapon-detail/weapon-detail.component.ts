@@ -38,21 +38,21 @@ export class WeaponDetailComponent implements OnInit {
   }
   updateCharaWeapon(attr, value) {
     for (const property in this.weapon) {
-      if ( property == attr) this.weapon[property] += value;
+      if ( property === attr) { this.weapon[property] += value; }
     }
   }
 
   saveWeaponCharacteristics() {
-    if (this.updatePointsRestants() == 0) {
-      if (this.weapon.getName() != '') {
+    if (this.updatePointsRestants() === 0) {
+      if (this.weapon.getName() !== '') {
         this.weaponService.updateWeapon(this.weapon.getId(), this.weapon);
         this.goBack();
-      } else {
-
       }
-    } else {
-
     }
+  }
 
+  deleteWeapon() {
+    this.weaponService.deleteWeapon(this.weapon.getId());
+    this.goBack();
   }
 }

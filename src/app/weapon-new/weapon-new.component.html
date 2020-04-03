@@ -4,6 +4,9 @@
   <div>
     <label>name:
       <input [(ngModel)]="weapon.name" placeholder="name"/>
+      <p [hidden]="weapon.name" class="alert alert-danger">
+        Name is required
+      </p>
     </label>
   </div>
   <div>
@@ -30,9 +33,12 @@
         </label>
       </li>
     </ul>
-    <p>Total points : {{updatePointsRestants()}}</p>
+    <p>Total points caractéristiques : {{updatePointsRestants()}}</p>
+    <p [hidden]="updatePointsRestants() == 0" class="alert alert-danger">
+      Il faut un nombre restant de point de 0
+    </p>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="createWeapon()" >Create</button>
+  <button class="btn btn-secondary"(click)="goBack()">go back</button>
+  <button class="btn btn-primary" (click)="createWeapon()" >Create</button>
 </div>
 

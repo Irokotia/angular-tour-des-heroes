@@ -4,6 +4,9 @@
   <div>
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name"/>
+      <p [hidden]="hero.name" class="alert alert-danger">
+        Name is required
+      </p>
     </label>
   </div>
   <div>
@@ -31,12 +34,13 @@
       </li>
     </ul>
     <p>Total points : {{updatePointsRestants()}}</p>
-
+    <p [hidden]="updatePointsRestants() == 0" class="alert alert-danger">
+      Il faut un nombre restant de point de 0
+    </p>
 
     <div>
       <p>Select a weapon</p>
       <mat-form-field>
-        <mat-label>hero's weapon</mat-label>
         <mat-select [(ngModel)]="hero.weaponid" selected="hero.weaponid">
           <mat-option value=''>No weapon</mat-option>
           <mat-option *ngFor="let weapon of weapons" [value]="weapon.id"  >
@@ -55,7 +59,10 @@
   </div>
 
 
-  <button (click)="goBack()">go back</button>
+  <button class="btn btn-secondary" (click)="goBack()">go back</button>
 
-  <button (click)="createHero()" >Create</button>
+
+
+
+  <button class="btn btn-primary" (click)="createHero()" >Create</button>
 </div>

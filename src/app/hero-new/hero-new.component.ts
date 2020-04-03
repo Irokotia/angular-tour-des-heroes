@@ -81,5 +81,4 @@ export class HeroNewComponent implements OnInit {
   maxPoints(val: number) {
     return this.updatePointsRestants() + val;
   }
-
 }

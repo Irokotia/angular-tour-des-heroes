@@ -34,9 +34,8 @@
 
 
     <div>
-      <p>Select a weapon</p>
+      <p>Select weapon</p>
       <mat-form-field>
-        <mat-label>hero's weapon</mat-label>
         <mat-select [(ngModel)]="hero.weaponid" selected="hero.weaponid">
           <mat-option value=''>No weapon</mat-option>
           <mat-option *ngFor="let weapon of weapons" [value]="weapon.id"  >
@@ -45,7 +44,6 @@
         </mat-select>
       </mat-form-field>
     </div>
-  </div>
 
   <div class="selectedWeapon" *ngIf="weapons && hero.weaponid">
     <div> Attaque : {{getSelectedWeapon().attaque}} </div>
@@ -55,7 +53,10 @@
   </div>
 
 
-  <button (click)="goBack()">go back</button>
+  <button class="btn btn-secondary" (click)="goBack()">go back</button>
 
-  <button (click)="saveHeroCharacteristics()" >Save</button>
+  <button class="btn btn-primary" (click)="saveHeroCharacteristics()" >Save</button>
+
+    <button class="btn btn-danger" (click)="deleteHero()">Delete</button>
+</div>
 </div>

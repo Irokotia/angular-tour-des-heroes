@@ -22,11 +22,11 @@ export class DashboardComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+      .subscribe(heroes => this.heroes = heroes.slice(0, 5));
   }
 
   getWeapons(): void {
     this.weaponService.getWeapons()
-      .subscribe(weapons => this.weapons = weapons.slice(1, 5));
+      .subscribe(weapons => this.weapons = weapons.slice(0, 5));
   }
 }

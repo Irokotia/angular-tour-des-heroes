@@ -7,6 +7,7 @@ import {WeaponService} from '../weapon.service';
 import {Weapon} from '../data/weapon';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-hero-detail',
@@ -16,7 +17,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
 
-  @Input() weapons : Weapon[];
+  @Input() weapons: Weapon[];
 
   constructor(
     private route: ActivatedRoute,
@@ -52,24 +53,20 @@ export class HeroDetailComponent implements OnInit {
 
 
   getSelectedWeapon() {
-    return this.weapons.find(e => e.id == this.hero.weaponid);
+    return this.weapons.find(e => e.id === this.hero.weaponid);
   }
   updateCharaHero(attr, value) {
     for (const property in this.hero) {
-      if ( property == attr) this.hero[property] += value;
+      if ( property === attr) { this.hero[property] += value; }
     }
   }
 
   saveHeroCharacteristics() {
-    if (this.updatePointsRestants() == 0) {
-      if (this.hero.getName() != '') {
+    if (this.updatePointsRestants() === 0) {
+      if (this.hero.getName() !== '') {
         this.heroService.updateHero(this.hero.getId(), this.hero);
         this.goBack();
-      } else {
-
       }
-    } else {
-
     }
 
   }
@@ -78,6 +75,8 @@ export class HeroDetailComponent implements OnInit {
     return this.updatePointsRestants() + val;
   }
 
-  /*getWeapon(id: string) {
-  }*/
+  deleteHero() {
+    this.heroService.deleteHero(this.hero.getId());
+    this.goBack();
+  }
 }
