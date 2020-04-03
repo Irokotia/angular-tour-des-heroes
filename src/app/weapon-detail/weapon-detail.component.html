@@ -31,6 +31,9 @@
       </li>
     </ul>
     <p>Total points : {{updatePointsRestants()}}</p>
+    <p [hidden]="updatePointsRestants() == 0" class="alert alert-danger">
+      Il faut un nombre restant de point de 0
+    </p>
   </div>
   <button class="btn btn-secondary" (click)="goBack()">go back</button>
   <button class="btn btn-primary" (click)="saveWeaponCharacteristics()" >Save</button>
